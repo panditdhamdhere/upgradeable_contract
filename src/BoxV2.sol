@@ -2,8 +2,11 @@
 
 pragma solidity ^0.8.19;
 
-contract BoxV2 {
-    // uint256 internal otherNumber;
+import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+
+contract BoxV2 is Initializable, OwnableUpgradeable, UUPSUpgradeable {
     uint256 internal number;
 
     function setNumber(uint256 _number) external {}
@@ -15,4 +18,8 @@ contract BoxV2 {
     function version() external pure returns (uint256) {
         return 2;
     }
+
+    function _authorizeUpgrade(
+        address newImplementation
+    ) internal override onlyOwner {}
 }
