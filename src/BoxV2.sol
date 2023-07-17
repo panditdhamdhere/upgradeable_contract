@@ -3,11 +3,10 @@
 pragma solidity ^0.8.19;
 
 contract BoxV2 {
+    // uint256 internal otherNumber;
     uint256 internal number;
 
-    function setNumber (uint256 _number) external {
-        
-    }
+    function setNumber(uint256 _number) external {}
 
     function getNumber() external view returns (uint256) {
         return number;
